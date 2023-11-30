@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const App = () => {
   const course = 'Half Stack application development'
   const parts = [
@@ -18,9 +19,7 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Part part={parts[0]} />
-      <Part part={parts[1]} />
-      <Part part={parts[2]} />
+      <Content parts={parts} />
       <Total parts={parts} />
     </div>
   )
@@ -38,9 +37,7 @@ const Content = (props) => {
   const parts = props.parts;
   const elements = [];
   parts.forEach(part => {
-    elements.push(<p>
-      {part.name} {part.excercises}
-    </p>);
+    elements.push(<Part part={part} />);
   })
   return (
     <>
