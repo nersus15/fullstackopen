@@ -21,9 +21,19 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content excercises={excercises} />
+      <Part excercise={excercises[0]} />
+      <Part excercise={excercises[1]} />
+      <Part excercise={excercises[2]} />
       <Total excercises={excercises} />
     </div>
+  )
+}
+
+const Part = (props) => {
+  const part = props.excercise.part;
+  const count = props.excercise.count;
+  return (
+    <p>{part} {count}</p>
   )
 }
 
