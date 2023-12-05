@@ -6,19 +6,36 @@ const App = () => {
   ]) 
   const [newName, setNewName] = useState('')
 
+  const addPerson = (e) =>{
+    e.preventDefault();
+    if(!newName) {
+      alert('New Name cannot empty');
+    }
+
+    const objectPerson = {
+      name: newName
+    };
+
+    setPersons(persons.concat(objectPerson));
+    setNewName('');
+  }
+  const handleNewNameChange = (e) => {
+    setNewName(e.target.value);
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
+      <form onSubmit={addPerson}>
         <div>
-          name: <input />
+          name: <input onChange={handleNewNameChange} value={newName} />
         </div>
         <div>
           <button type="submit">add</button>
         </div>
       </form>
       <h2>Numbers</h2>
-      ...
+      {persons.map((person, i) => <p key={i}>{person.name}</p>)}
     </div>
   )
 }
