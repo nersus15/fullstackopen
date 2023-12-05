@@ -10,8 +10,14 @@ const App = () => {
     e.preventDefault();
     if(!newName) {
       alert('New Name cannot empty');
+      return;
     }
 
+    const exist = persons.find((person) => person.name == newName);
+    if(exist !== undefined){
+      alert(`${newName} is already added to phonebook`);
+      return;
+    }
     const objectPerson = {
       name: newName
     };
